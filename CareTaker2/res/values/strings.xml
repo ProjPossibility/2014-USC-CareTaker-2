@@ -6,7 +6,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_configuration">ConfigurationActivity</string>
     <string name="title_activity_display_message">DisplayMessageActivity</string>
-    <string name="button_emcall">TODO</string>
-    <string name="edit_message">TODO</string>
+    <string name="button_config">Config</string>
+    <string name="button_emcall">Emergency</string>
+    <string name="edit_message">message</string>
+    <string name="Height">Height</string>
+    <string name="Temperature">Temperature</string>
+    <string name="button_updateConfig">Update</string>
+    <string name="button_cancelConfig">CanelConfig</string>
 
 </resources>

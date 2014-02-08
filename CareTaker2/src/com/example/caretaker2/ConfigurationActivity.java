@@ -1,8 +1,10 @@
 package com.example.caretaker2;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 public class ConfigurationActivity extends Activity {
 
@@ -19,4 +21,11 @@ public class ConfigurationActivity extends Activity {
 		return true;
 	}
 
+	public void updateConfig(View view){
+		
+	}
+	public void cancelConfig(View view){
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+	}
 }
