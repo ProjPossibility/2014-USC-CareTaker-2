@@ -11,4 +11,5 @@
 <fullyQualifiedTypeName name="java.awt.Menu"/>
 <fullyQualifiedTypeName name="android.view.View"/>
 <fullyQualifiedTypeName name="android.net.Uri"/>
+<fullyQualifiedTypeName name="com.example.caretaker2.MainActivity"/>
 </qualifiedTypeNameHistroy>
