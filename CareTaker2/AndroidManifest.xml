@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.caretaker2.ConfigurationActivity"
+            android:label="@string/title_activity_configuration" >
+        </activity>
+        <activity
+            android:name="com.example.caretaker2.DisplayMessageActivity"
+            android:label="@string/title_activity_display_message" >
+        </activity>
     </application>
 
 </manifest>
