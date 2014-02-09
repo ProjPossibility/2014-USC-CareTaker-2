@@ -47,7 +47,7 @@
             android:id="@+id/saySomething"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="saySomething"
+            android:onClick="ask"
             android:text="@string/Talk" />
     </TableRow>
 
@@ -97,4 +97,17 @@
             android:onClick="getLocation"
             android:text="@string/location" />
     </TableRow>
+    
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/Battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="checkBattery"
+            android:text="@string/battery" />
+    </TableRow>
+    
 </TableLayout>
