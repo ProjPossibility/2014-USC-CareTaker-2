@@ -16,7 +16,7 @@
     <string name="humidity">Humidity Range:</string>
     <string name="vibration">Vibration:</string>
     <string name="button_cancelConfig">Cancel</string>
-    <string name="emergencyCall">emergencyCall</string>
+    <string name="emergencyCall">Emergency Call</string>
     <string name="Talk">Talk</string>
     <string name="button_camera">camera</string>
     <string name="Sensitivity">Sensitivity Threshold</string>
@@ -27,5 +27,6 @@
     <string name="GPS">GPS</string>
     <string name="VR">VR</string>
     <string name="location">Location</string>
-
+    <string name="GPS">GPS Settings</string>
+    <string name="VR">Virtual Reality</string>
 </resources>
