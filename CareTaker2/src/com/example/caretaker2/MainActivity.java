@@ -15,6 +15,8 @@ import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.media.AudioManager;
+import android.telephony.SmsManager;
 
 public class MainActivity extends Activity {
 
@@ -55,16 +57,20 @@ public class MainActivity extends Activity {
 
 	public void callEmergency(View view) {
 
-		/*
-		 * String response = "I am trying to call your emergency contact";
-		 * Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
-		 * .show(); ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);
-		 */
+	
+		 /* String response = "I am trying to call your emergency contact";
+		  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
+		  .show(); ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);*/
+		 
+		sendText( "I am calling primary emergency contact. I may be in trouble.");
+		
 		try {
 			Intent callIntent = new Intent(Intent.ACTION_CALL);
-			callIntent.setData(Uri.parse("tel:213-268-7789"));
+			callIntent.setData(Uri.parse("tel:408-887-5230"));
 			callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			
 			startActivity(callIntent);
+			
 			finish();
 		} catch (Exception ex) {
 			Toast.makeText(MainActivity.this, "Call failed, dial again!",
@@ -72,7 +78,7 @@ public class MainActivity extends Activity {
 		}
 
 	}
-
+	
 	public void saySomething(View view) {
 		String response = "Are you OK?";
 		Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT)
@@ -129,7 +135,30 @@ public class MainActivity extends Activity {
 					Intent.ACTION_VIEW,
 					Uri.parse("https://market.android.com/details?id=APP_PACKAGE_NAME"));
 			startActivity(browserIntent);
-
 		}
+	}
+	
+	public void sendHelp(View view)
+	{
+		String output = "Please Help!";
+		sendText( output );
+	}
+	
+	public void sendText(String message)
+	{
+		
+		String phoneNo = "2132687789"/*"4088875230"*/;
+
+		  try {
+			SmsManager smsManager = SmsManager.getDefault();
+			smsManager.sendTextMessage(phoneNo, null, message, null, null);
+			Toast.makeText(getApplicationContext(), "SMS Sent! Message says " + message.toString(),
+						Toast.LENGTH_LONG).show();
+		  } catch (Exception e) {
+			Toast.makeText(getApplicationContext(),
+				"SMS faild, please try again later!",
+				Toast.LENGTH_LONG).show();
+			e.printStackTrace();
+		  }
 	}
 }
