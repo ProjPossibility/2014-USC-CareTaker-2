@@ -2,7 +2,6 @@ package com.example.caretaker2;
 
 import java.util.Locale;
 
-import android.R;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -19,6 +18,9 @@ import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.content.BroadcastReceiver;
+import android.os.BatteryManager;
+import android.content.IntentFilter;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -48,7 +50,7 @@ public class MainActivity extends Activity implements
 				callEmergency(view);
 			}
 		});
-		
+
 		button = (Button) findViewById(R.id.location);
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -56,7 +58,7 @@ public class MainActivity extends Activity implements
 				getLocation(view);
 			}
 		});
-		
+
 		ttobj = new TextToSpeech(getApplicationContext(),
 				new TextToSpeech.OnInitListener() {
 					@Override
@@ -66,7 +68,7 @@ public class MainActivity extends Activity implements
 						}
 					}
 				});
-	}
+	} // end of onCreate()
 
 	@Override
 	public void onPause() {
@@ -77,6 +79,8 @@ public class MainActivity extends Activity implements
 		super.onPause();
 	}
 
+	//turn on gps
+	
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -88,24 +92,25 @@ public class MainActivity extends Activity implements
 		mLocationClient.disconnect();
 		super.onStop();
 	}
-
-	public void callEmergency(View view) {
-
 	
-		 /* String response = "I am trying to call your emergency contact";
-		  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
-		  .show(); ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);*/
-		 
-		sendText( "I am calling primary emergency contact. I may be in trouble.");
+	//turn off gps
+	
+	public void callEmergency(View view) {
+		saySomething("Calling your emergency contact");
 		
+		 try {
+             Thread.sleep(3000); // Delay 3 seconds to handle better turning on loudspeaker
+           } catch (InterruptedException e) {
+           }
+		
+		sendText("I am calling the emergency contact. I may need help.");
+
 		try {
 			Intent callIntent = new Intent(Intent.ACTION_CALL);
 			callIntent.setData(Uri.parse("tel:408-887-5230"));
 			callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			
 			startActivity(callIntent);
-			
-			finish();
+			//finish();
 		} catch (Exception ex) {
 			Toast.makeText(MainActivity.this, "Call failed, dial again!",
 					Toast.LENGTH_SHORT).show();
@@ -113,8 +118,12 @@ public class MainActivity extends Activity implements
 
 	}
 	
-	public void saySomething(View view) {
-		String response = "Are you OK?";
+	public void ask(View view)
+	{
+		saySomething("Are you OK?");
+	}
+
+	public void saySomething(String response) {
 		Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT)
 				.show();
 		try {
@@ -124,6 +133,14 @@ public class MainActivity extends Activity implements
 					Toast.LENGTH_SHORT).show();
 		}
 	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		
+		String got = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
+			Toast.makeText(this, got,
+					Toast.LENGTH_SHORT).show();
+
+		}
 
 	public void vibrate(View view) {
 		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -170,31 +187,8 @@ public class MainActivity extends Activity implements
 					Intent.ACTION_VIEW,
 					Uri.parse("https://market.android.com/details?id=APP_PACKAGE_NAME"));
 			startActivity(browserIntent);
-		}
-	}
-	
-	public void sendHelp(View view)
-	{
-		String output = "Please Help!";
-		sendText( output );
-	}
-	
-	public void sendText(String message)
-	{
-		
-		String phoneNo = "2132687789"/*"4088875230"*/;
 
-		  try {
-			SmsManager smsManager = SmsManager.getDefault();
-			smsManager.sendTextMessage(phoneNo, null, message, null, null);
-			Toast.makeText(getApplicationContext(), "SMS Sent! Message says " + message.toString(),
-						Toast.LENGTH_LONG).show();
-		  } catch (Exception e) {
-			Toast.makeText(getApplicationContext(),
-				"SMS faild, please try again later!",
-				Toast.LENGTH_LONG).show();
-			e.printStackTrace();
-		  }
+		}
 	}
 
 	private void getLocation(View view) {
@@ -205,13 +199,19 @@ public class MainActivity extends Activity implements
 			GooglePlayServicesUtil.getErrorDialog(gpStatus, this, 1234);
 		}
 		mCurrentLocation = mLocationClient.getLastLocation();
-		 
-		Toast.makeText(getApplicationContext(), mCurrentLocation.toString(),
-		Toast.LENGTH_SHORT).show();
 		
-		/*TextView textView = new TextView(this);
-		textView.setTextSize(40);
-		textView.setText(mCurrentLocation.toString());*/
+		/*String altitude = Double.toString(mCurrentLocation.getAltitude());*/
+		String longitude = Double.toString(mCurrentLocation.getLongitude());
+		String lattitude = Double.toString(mCurrentLocation.getLatitude());
+		/*String time = Double.toString(mCurrentLocation.getTime());*/
+
+		/*Toast.makeText(getApplicationContext(), "Height: " + altitude,
+				Toast.LENGTH_SHORT).show();*/
+		Toast.makeText(getApplicationContext(),
+				"Present Location: " + longitude + " ," + lattitude,
+				Toast.LENGTH_SHORT).show();
+		/*Toast.makeText(getApplicationContext(), "Current Time: " +  time,
+				Toast.LENGTH_SHORT).show();*/
 	}
 
 	@Override
@@ -244,9 +244,11 @@ public class MainActivity extends Activity implements
 		}
 	}
 
+	//start of wi-fi connect
+	
 	@Override
 	public void onConnected(Bundle arg0) {
-		if(!mLocationClient.isConnected()){
+		if (!mLocationClient.isConnected()) {
 			mLocationClient.connect();
 		}
 		Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
@@ -257,5 +259,66 @@ public class MainActivity extends Activity implements
 	public void onDisconnected() {
 		Toast.makeText(this, "Disconnected. Please re-connect.",
 				Toast.LENGTH_SHORT).show();
+	}
+
+	//end of wi-fi connect
+	
+	public void sendHelp(View view) {
+		String output = "Please Help!";
+		sendText(output);
+	}
+
+	public void sendText(String message) {
+
+		String phoneNo = "2132687789"/* "4088875230" */;
+
+		try {
+			SmsManager smsManager = SmsManager.getDefault();
+			smsManager.sendTextMessage(phoneNo, null, message, null, null);
+			Toast.makeText(getApplicationContext(),
+					"SMS Sent! Message says: " + message.toString(),
+					Toast.LENGTH_LONG).show();
+		} catch (Exception e) {
+			Toast.makeText(getApplicationContext(),
+					"SMS faild, please try again later!", Toast.LENGTH_LONG)
+					.show();
+			e.printStackTrace();
+		}
+	}
+	
+	
+public void checkBattery(View view) {
+
+		IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+		Intent batteryStatus = getApplicationContext().registerReceiver(null,
+				ifilter);
+
+		// Are we charging / charged?
+		int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+		boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING
+				|| status == BatteryManager.BATTERY_STATUS_FULL;
+
+		// How are we charging?
+		int chargePlug = batteryStatus.getIntExtra(
+				BatteryManager.EXTRA_PLUGGED, -1);
+		boolean usbCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_USB;
+		boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
+		int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+		int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+
+		float batteryPct = level/* / (float) scale*/;
+		
+		if ( batteryPct < 70 )
+		{
+			saySomething( "My battery level is low." );
+			 try {
+	                Thread.sleep(500); // Delay 0,5 seconds to handle better turning on loudspeaker
+	              } catch (InterruptedException e) {
+	              }
+			 
+			sendText( "My battery level is under 30%" );
+		}
+
+		Toast.makeText(this, (Float.toString(batteryPct)+"%"), Toast.LENGTH_SHORT).show();
 	}
 }
