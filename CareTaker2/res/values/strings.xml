@@ -15,5 +15,6 @@
     <string name="button_cancelConfig">CanelConfig</string>
     <string name="emergencyCall">emergencyCall</string>
     <string name="Talk">Talk</string>
+    <string name="button_camera">camera</string>
 
 </resources>

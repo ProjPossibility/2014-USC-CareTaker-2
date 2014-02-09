@@ -50,11 +50,12 @@ public class MainActivity extends Activity {
 
 	public void callEmergency(View view) {
 
+		/*
 		String response = "I am trying to call your emergency contact";
 		Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
 				.show();
 		ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);
-		/*
+		*/
 		try {
 			Intent callIntent = new Intent(Intent.ACTION_CALL);
 			callIntent.setData(Uri.parse("tel:2132687789"));
@@ -66,7 +67,7 @@ public class MainActivity extends Activity {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		*/
+		
 	}
 
 	public void saySomething(View view) {
@@ -84,5 +85,10 @@ public class MainActivity extends Activity {
 		 * String message = edittext.getText().toString();
 		 */
 		startActivity(intent);
+	}
+	
+	public void launchCamera(View view){
+		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+		 startActivityForResult(intent, 0); 
 	}
 }

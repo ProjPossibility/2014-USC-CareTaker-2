@@ -15,4 +15,6 @@
 <fullyQualifiedTypeName name="android.content.ActivityNotFoundException"/>
 <fullyQualifiedTypeName name="com.example.caretaker2.R.layout"/>
 <fullyQualifiedTypeName name="com.example.caretaker2.R.id"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.speech.tts.TextToSpeech"/>
 </qualifiedTypeNameHistroy>
