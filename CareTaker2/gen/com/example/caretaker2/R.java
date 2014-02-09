@@ -24,9 +24,10 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080006;
+        public static final int action_settings=0x7f080007;
         public static final int emergencyCall=0x7f080005;
         public static final int heightVal=0x7f080001;
+        public static final int saySomething=0x7f080006;
         public static final int tableRow1=0x7f080000;
         public static final int tableRow2=0x7f080002;
         public static final int tableRow3=0x7f080004;
@@ -44,6 +45,7 @@ public final class R {
     }
     public static final class string {
         public static final int Height=0x7f050008;
+        public static final int Talk=0x7f05000d;
         public static final int Temperature=0x7f050009;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;

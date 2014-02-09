@@ -39,7 +39,9 @@ public class MainActivity extends Activity {
 			ex.printStackTrace();
 		}
 	}
-
+	public void saySomething(View view){
+		
+	}
 	public void launchConfig(View view) {
 
 		Intent intent = new Intent(this, ConfigurationActivity.class);
