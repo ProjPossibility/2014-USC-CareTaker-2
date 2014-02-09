@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
 		 */
 		try {
 			Intent callIntent = new Intent(Intent.ACTION_CALL);
-			callIntent.setData(Uri.parse("tel:213-268-7789"));
+			callIntent.setData(Uri.parse("tel:408-887-5230"));
 			callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(callIntent);
 			finish();
