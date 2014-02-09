@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.Toast;
 
 public class ConfigurationActivity extends Activity {
 
@@ -21,9 +23,12 @@ public class ConfigurationActivity extends Activity {
 		return true;
 	}
 
-	public void updateConfig(View view){
-		
+	public void updateConfig(View view) {
+		Integer height = ((SeekBar) findViewById(R.id.seekBarHeight))
+				.getProgress();
+		Toast.makeText(this, height.toString(), Toast.LENGTH_SHORT).show();
 	}
+	
 	public void cancelConfig(View view){
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
