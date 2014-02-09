@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 
 	public void vibrate(View view) {
 		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		v.vibrate(500);
+		v.vibrate(15000);
 	}
 
 	public void launchConfig(View view) {
