@@ -13,5 +13,6 @@
     <string name="Temperature">Temperature</string>
     <string name="button_updateConfig">Update</string>
     <string name="button_cancelConfig">CanelConfig</string>
+    <string name="emergencyCall">emergencyCall</string>
 
 </resources>
