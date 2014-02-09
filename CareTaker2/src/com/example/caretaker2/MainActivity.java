@@ -3,9 +3,11 @@ package com.example.caretaker2;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
@@ -51,44 +53,49 @@ public class MainActivity extends Activity {
 	public void callEmergency(View view) {
 
 		/*
-		String response = "I am trying to call your emergency contact";
-		Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
-				.show();
-		ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);
-		*/
+		 * String response = "I am trying to call your emergency contact";
+		 * Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
+		 * .show(); ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);
+		 */
 		try {
 			Intent callIntent = new Intent(Intent.ACTION_CALL);
-			callIntent.setData(Uri.parse("tel:2132687789"));
-			String callingNumber = "2132687789";
-			Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
-					+ callingNumber));
+			callIntent.setData(Uri.parse("tel:213-268-7789"));
 			callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(intent);
+			startActivity(callIntent);
+			finish();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			Toast.makeText(MainActivity.this, "Call failed, dial again!",
+					Toast.LENGTH_SHORT).show();
 		}
-		
+
 	}
 
 	public void saySomething(View view) {
 		String response = "Are you OK?";
-		Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
+		Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT)
 				.show();
-		ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);
+		try {
+			ttobj.speak(response, TextToSpeech.QUEUE_FLUSH, null);
+		} catch (Exception ex) {
+			Toast.makeText(this, "Talk failed, pls try again!",
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	public void vibrate(View view) {
+		Vibrator v = (Vibrator) this.getApplicationContext().getSystemService(
+				Context.VIBRATOR_SERVICE);
+		v.vibrate(500);
 	}
 
 	public void launchConfig(View view) {
 
 		Intent intent = new Intent(this, ConfigurationActivity.class);
-		/*
-		 * EditText edittext = (EditText) findViewById(R.id.edit_message);
-		 * String message = edittext.getText().toString();
-		 */
 		startActivity(intent);
 	}
-	
-	public void launchCamera(View view){
+
+	public void launchCamera(View view) {
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-		 startActivityForResult(intent, 0); 
+		startActivityForResult(intent, 0);
 	}
 }

@@ -24,7 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001f;
+        public static final int action_settings=0x7f080020;
         public static final int editText1=0x7f080011;
         public static final int editText2=0x7f080014;
         public static final int editText3=0x7f080017;
@@ -54,6 +54,7 @@ public final class R {
         public static final int tableRowTemp=0x7f080006;
         public static final int tableRowVibration=0x7f080000;
         public static final int tempVal=0x7f080008;
+        public static final int vibrate=0x7f08001f;
         public static final int vibrationOff=0x7f080002;
         public static final int vibrationOn=0x7f080001;
     }
@@ -89,6 +90,7 @@ public final class R {
         public static final int light=0x7f05000b;
         public static final int title_activity_configuration=0x7f050003;
         public static final int title_activity_display_message=0x7f050004;
+        public static final int vibrate=0x7f050016;
         public static final int vibration=0x7f05000d;
     }
     public static final class style {

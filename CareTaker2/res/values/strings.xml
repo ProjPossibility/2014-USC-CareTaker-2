@@ -23,5 +23,6 @@
     <string name="Sound">Sound Threshold</string>
     <string name="Acceleration">Acceleration Threshold</string>
     <string name="Brightness">Brightness Threshold</string>
+    <string name="vibrate">Vibrate</string>
 
 </resources>
