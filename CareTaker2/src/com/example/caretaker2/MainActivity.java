@@ -163,7 +163,7 @@ public class MainActivity extends Activity implements
 		 * params.setFlashMode(Parameters.FLASH_MODE_ON); }
 		 * mCamera.setParameters(params); mCamera.startPreview();
 		 */
-		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+		Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
 		startActivityForResult(intent, 0);
 	}
 
