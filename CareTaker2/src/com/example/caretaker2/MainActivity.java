@@ -1,10 +1,13 @@
 package com.example.caretaker2;
 
+import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -83,8 +86,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void vibrate(View view) {
-		Vibrator v = (Vibrator) this.getApplicationContext().getSystemService(
-				Context.VIBRATOR_SERVICE);
+		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		v.vibrate(500);
 	}
 
@@ -95,6 +97,18 @@ public class MainActivity extends Activity {
 	}
 
 	public void launchCamera(View view) {
+		Camera mCamera = Camera.open();
+
+		Camera.Parameters params = mCamera.getParameters();
+		// Check Whether device supports AutoFlash, If you YES then set
+		// AutoFlash
+		List<String> flashModes = params.getSupportedFlashModes();
+		if (flashModes
+				.contains(android.hardware.Camera.Parameters.FLASH_MODE_OFF)) {
+			params.setFlashMode(Parameters.FLASH_MODE_ON);
+		}
+		mCamera.setParameters(params);
+		mCamera.startPreview();
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 		startActivityForResult(intent, 0);
 	}
