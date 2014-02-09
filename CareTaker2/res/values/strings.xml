@@ -12,10 +12,15 @@
     <string name="Height">Height Range:</string>
     <string name="Temperature">Temperature Range:</string>
     <string name="button_updateConfig">Update</string>
-    <string name="button_cancelConfig">CanelConfig</string>
-    <string name="emergencyCall">emergencyCall</string>
-    <string name="Talk">Talk</string>
     <string name="light">Light Range:</string>
     <string name="humidity">Humidity Range:</string>
+    <string name="vibration">Vibration:</string>
+    <string name="button_cancelConfig">Cancel</string>
+    <string name="emergencyCall">emergencyCall</string>
+    <string name="Talk">Talk</string>
+    <string name="Sensitivity">Sensitivity Threshold</string>
+    <string name="Sound">Sound Threshold</string>
+    <string name="Acceleration">Acceleration Threshold</string>
+    <string name="Brightness">Brightness Threshold</string>
 
 </resources>

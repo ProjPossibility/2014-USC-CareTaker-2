@@ -2,61 +2,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-	  <TableRow
-        android:id="@+id/tableRowHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView android:text="@string/Height" />
-
-        <EditText
-            android:id="@+id/heightValMin"
-            android:inputType="numberDecimal" />
-        
-        <EditText
-            android:id="@+id/heightValMax"
-            android:inputType="numberDecimal" /> 
-            
-      </TableRow>
-	
-	<TableRow
-        android:id="@+id/tableRowTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView android:text="@string/Temperature" />
-
-        <EditText
-            android:id="@+id/tempValMin"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/tempValMax"
-            android:inputType="text" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRowLight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView android:text="@string/light" />
-
-        <EditText
-            android:id="@+id/lightValMin"
-            android:inputType="numberDecimal" />
-
-        <EditText
-            android:id="@+id/lightValMax"
-            android:inputType="numberDecimal" />
-    </TableRow>
-
     <TableRow
         android:id="@+id/tableRowVibration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-        <TextView android:text="Vibration:" >
+        <TextView android:text="@string/vibration" >
         </TextView>
 
         <RadioButton
@@ -71,6 +22,58 @@
 
     </TableRow><!-- These radio buttons are not in a group so they may both be true at once (I think) -->
     
+	  <TableRow
+        android:id="@+id/tableRowHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView android:text="@string/Height" />
+
+        <SeekBar
+            android:id="@+id/seekBarHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+        <EditText
+            android:id="@+id/heightVal"
+            android:inputType="numberDecimal" /> 
+            
+      </TableRow>
+	
+	<TableRow
+        android:id="@+id/tableRowTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView android:text="@string/Temperature" />
+
+        <SeekBar
+            android:id="@+id/seekBarTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/tempVal"
+            android:inputType="text" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRowLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView android:text="@string/light" />
+
+        <SeekBar
+            android:id="@+id/seekBarLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/lightValMax"
+            android:inputType="numberDecimal" />
+    </TableRow>
+    
     <TableRow
         android:id="@+id/tableRowHumidity"
         android:layout_width="wrap_content"
@@ -78,9 +81,10 @@
 
         <TextView android:text="@string/humidity" />
 
-        <EditText
-            android:id="@+id/humidityValMin"
-            android:inputType="numberDecimal" />
+        <SeekBar
+            android:id="@+id/seekBarHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/humidityValMax"
@@ -88,7 +92,94 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRowButtons"
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView android:text="@string/Sensitivity" />
+
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" >
+
+            <requestFocus />
+        </EditText>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView android:text="@string/Sound" />
+
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView android:text="@string/Acceleration" />
+
+        <SeekBar
+            android:id="@+id/seekBar4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+    
+    <TableRow
+        android:id="@+id/tableRow11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView android:text="@string/Brightness" />
+
+        <SeekBar
+            android:id="@+id/seekBar3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+    </TableRow>
+    
+     <TableRow
+        android:id="@+id/tableRow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -97,12 +188,12 @@
             android:layout_height="wrap_content"
             android:onClick="Update"
             android:text="@string/button_updateConfig" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="cancelConfig"
             android:text="@string/button_cancelConfig" />
+
     </TableRow>
 
 </TableLayout>
