@@ -3,11 +3,10 @@
 
     <string name="app_name">CareTaker2</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_configuration">ConfigurationActivity</string>
+    <string name="title_activity_configuration">Configuration Activity</string>
     <string name="title_activity_display_message">DisplayMessageActivity</string>
-    <string name="button_config">Config</string>
-    <string name="button_emcall">Emergency</string>
+    <string name="button_config">Configure Settings</string>
+    <string name="button_emcall">Fire</string>
     <string name="edit_message">message</string>
     <string name="Height">Height Range:</string>
     <string name="Temperature">Temperature Range:</string>
@@ -16,9 +15,9 @@
     <string name="humidity">Humidity Range:</string>
     <string name="vibration">Vibration:</string>
     <string name="button_cancelConfig">Cancel</string>
-    <string name="emergencyCall">Emergency Call</string>
-    <string name="Talk">Talk</string>
-    <string name="button_camera">camera</string>
+    <string name="emergencyCall">Code Red</string>
+    <string name="Talk">Severity Level A</string>
+    <string name="button_camera">Fallen Down</string>
     <string name="Sensitivity">Sensitivity Threshold</string>
     <string name="Sound">Sound Threshold</string>
     <string name="Acceleration">Acceleration Threshold</string>
@@ -26,7 +25,9 @@
     <string name="vibrate">Vibrate</string>
     <string name="VR">Voice Recognition</string>
     <string name="sendText">Send Emergency Text</string>
-    <string name="location">Location</string>
+    <string name="location">Check Location</string>
     <string name="GPS">GPS Settings</string>
+    <string name="battery">Battery Status</string>
+    
 
 </resources>
