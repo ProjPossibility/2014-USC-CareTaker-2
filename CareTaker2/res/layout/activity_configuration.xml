@@ -10,15 +10,25 @@
         <TextView android:text="@string/vibration" >
         </TextView>
 
-        <RadioButton
-            android:id="@+id/vibrationOn"
-            android:text="ON" >
-        </RadioButton>
+      	<RadioGroup
+      	    android:id="@+id/radioGroupVibration"
+      	    android:layout_width="match_parent"
+      	    android:layout_height="wrap_content"
+      	    android:orientation="horizontal"
+      	    android:layout_alignParentLeft="true"
+      	    android:layout_above="@+id/fbplacename" >
+      	    
+        	<RadioButton
+            	android:id="@+id/vibrationOn"
+           		android:text="ON" >
+        	</RadioButton>
 
-        <RadioButton
-            android:id="@+id/vibrationOff"
-            android:text="OFF" >
-        </RadioButton>
+	        <RadioButton
+    	        android:id="@+id/vibrationOff"
+        	    android:text="OFF" >
+        	</RadioButton>
+        	
+       	</RadioGroup>
 
     </TableRow><!-- These radio buttons are not in a group so they may both be true at once (I think) -->
     
