@@ -36,6 +36,7 @@ public class MainActivity extends Activity implements
 	Location mCurrentLocation;
 	private LocationClient mLocationClient;
 	private static final int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+	String got;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,15 +96,25 @@ public class MainActivity extends Activity implements
 	
 	//turn off gps
 	
-	public void callEmergency(View view) {
+	public void callEmergency(View view)
+	{
+		call();
+	}
+	
+	public void call() {
 		saySomething("Calling your emergency contact");
 		
 		 try {
-             Thread.sleep(3000); // Delay 3 seconds to handle better turning on loudspeaker
+             Thread.sleep(2750); // Delay 3 seconds to handle better turning on loudspeaker
            } catch (InterruptedException e) {
            }
 		
 		sendText("I am calling the emergency contact. I may need help.");
+		
+		try {
+            Thread.sleep(1000); // Delay 1 second to handle better turning on loudspeaker
+          } catch (InterruptedException e) {
+          }
 
 		try {
 			Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -121,6 +132,16 @@ public class MainActivity extends Activity implements
 	public void ask(View view)
 	{
 		saySomething("Are you OK?");
+			 try {
+	                Thread.sleep(500); // Delay 0,5 seconds to handle better turning on loudspeaker
+	              } catch (InterruptedException e) {
+	              }
+		voiceInput();
+		
+		if ( got.contains( "I am hurt" ) )
+			call();
+		else
+			saySomething("Good to know.");
 	}
 
 	public void saySomething(String response) {
@@ -136,7 +157,7 @@ public class MainActivity extends Activity implements
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
-		String got = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
+		got = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
 			Toast.makeText(this, got,
 					Toast.LENGTH_SHORT).show();
 
@@ -165,6 +186,7 @@ public class MainActivity extends Activity implements
 		 */
 		Intent intent = new Intent("android.media.action.VIDEO_CAPTURE");
 		startActivityForResult(intent, 0);
+		finish();
 	}
 
 	public void turnGPSOn(View view) {
@@ -173,7 +195,12 @@ public class MainActivity extends Activity implements
 		// sendBroadcast(intent);
 	}
 
-	public void voiceRecognition(View view) {
+	public void voiceRecognition(View view)
+	{
+		voiceInput();
+	}
+	
+	public void voiceInput() {
 		try {
 			Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 			intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -189,6 +216,7 @@ public class MainActivity extends Activity implements
 			startActivity(browserIntent);
 
 		}
+		
 	}
 
 	private void getLocation(View view) {
