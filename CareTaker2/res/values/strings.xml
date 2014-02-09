@@ -25,5 +25,6 @@
     <string name="Brightness">Brightness Threshold</string>
     <string name="vibrate">Vibrate</string>
     <string name="GPS">GPS</string>
+    <string name="VR">VR</string>
 
 </resources>

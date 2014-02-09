@@ -24,7 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080023;
+        public static final int action_settings=0x7f080024;
         public static final int editText1=0x7f080013;
         public static final int editText2=0x7f080016;
         public static final int editText3=0x7f080019;
@@ -60,6 +60,7 @@ public final class R {
         public static final int vibrate=0x7f080021;
         public static final int vibrationOff=0x7f080004;
         public static final int vibrationOn=0x7f080003;
+        public static final int vr=0x7f080023;
     }
     public static final class layout {
         public static final int activity_configuration=0x7f030000;
@@ -80,6 +81,7 @@ public final class R {
         public static final int Sound=0x7f050013;
         public static final int Talk=0x7f050010;
         public static final int Temperature=0x7f050009;
+        public static final int VR=0x7f050018;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int button_camera=0x7f050011;

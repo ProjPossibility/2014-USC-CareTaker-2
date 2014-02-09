@@ -3,12 +3,14 @@ package com.example.caretaker2;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Settings;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
@@ -109,9 +111,25 @@ public class MainActivity extends Activity {
 	}
 
 	public void turnGPSOn(View view) {
-		startActivity(new Intent(
-				Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+		startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 		// intent.putExtra("enabled", true);
 		// sendBroadcast(intent);
+	}
+
+	public void voiceRecognition(View view) {
+		try {
+			Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+			intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+					RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+			intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+					"Voice recognition Demo...");
+			startActivityForResult(intent, 1234);
+		} catch (ActivityNotFoundException e) {
+			Intent browserIntent = new Intent(
+					Intent.ACTION_VIEW,
+					Uri.parse("https://market.android.com/details?id=APP_PACKAGE_NAME"));
+			startActivity(browserIntent);
+
+		}
 	}
 }
