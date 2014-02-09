@@ -26,5 +26,6 @@
     <string name="vibrate">Vibrate</string>
     <string name="GPS">GPS</string>
     <string name="VR">VR</string>
+    <string name="location">Location</string>
 
 </resources>

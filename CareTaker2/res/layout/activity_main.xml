@@ -86,5 +86,15 @@
             android:onClick="voiceRecognition"
             android:text="@string/VR" />
     </TableRow>
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
+        <Button
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getLocation"
+            android:text="@string/location" />
+    </TableRow>
 </TableLayout>
