@@ -24,5 +24,6 @@
     <string name="Acceleration">Acceleration Threshold</string>
     <string name="Brightness">Brightness Threshold</string>
     <string name="vibrate">Vibrate</string>
+    <string name="GPS">GPS</string>
 
 </resources>

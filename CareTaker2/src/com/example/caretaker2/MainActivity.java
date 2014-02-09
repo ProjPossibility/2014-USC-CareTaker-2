@@ -1,16 +1,14 @@
 package com.example.caretaker2;
 
-import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-	TextToSpeech ttobj;
+	private TextToSpeech ttobj;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,19 +95,23 @@ public class MainActivity extends Activity {
 	}
 
 	public void launchCamera(View view) {
-		Camera mCamera = Camera.open();
-
-		Camera.Parameters params = mCamera.getParameters();
-		// Check Whether device supports AutoFlash, If you YES then set
-		// AutoFlash
-		List<String> flashModes = params.getSupportedFlashModes();
-		if (flashModes
-				.contains(android.hardware.Camera.Parameters.FLASH_MODE_OFF)) {
-			params.setFlashMode(Parameters.FLASH_MODE_ON);
-		}
-		mCamera.setParameters(params);
-		mCamera.startPreview();
+		/*
+		 * Camera mCamera = Camera.open(); Camera.Parameters params =
+		 * mCamera.getParameters(); // Check Whether device supports AutoFlash,
+		 * If you YES then set // AutoFlash List<String> flashModes =
+		 * params.getSupportedFlashModes(); if (flashModes
+		 * .contains(android.hardware.Camera.Parameters.FLASH_MODE_OFF)) {
+		 * params.setFlashMode(Parameters.FLASH_MODE_ON); }
+		 * mCamera.setParameters(params); mCamera.startPreview();
+		 */
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 		startActivityForResult(intent, 0);
+	}
+
+	public void turnGPSOn(View view) {
+		startActivity(new Intent(
+				Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+		// intent.putExtra("enabled", true);
+		// sendBroadcast(intent);
 	}
 }
